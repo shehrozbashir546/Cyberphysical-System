@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <shared-place initialMarking="1" invariant="&lt; inf" name="P0"/>
+  <constant name="ActionTime" value="1"/>
+  <net active="true" id="TAPN1" type="P/T net">
+    <labels border="false" height="341" positionX="0" positionY="0" width="692">"Black Squares": Transitions
+"Circles": Places
+"Time intervals": associated to arcs, restrict tokens to pass of an age outside of the required time interval
+"Tokens": real number contained in places showing age, real-world example could be a train
+"Invariant": restriction of token-age, if no inariant then initially [0, \infty) 
+"Normal arcs": consume tokens from places to transitions, create tokens of age 0 frome transition to places 
+"Transport arcs": produced tokens have the same age as the consumed tokens
+"Inhibitor arcs": test of absence of tokens of certain ages in places, only fires transitions if there is no token in the places before
+":1" : helps distinguishing where tokens go
+"integer constants": useful for constants used often
+
+Simulation
+- red transitions are enabled
+- if more than one token of appropriate age as input, you can choose between random, youngest, oldest and manual for which token should be selected
+
+Verification
+- in the query dialog you can specify extra number of tokens for cases where a transition has more outputs than inputs
+- TAPAAL can find the additional amount of tokens to make the net bounded
+</labels>
+    <place displayName="true" id="CoffeeJunkie" initialMarking="1" invariant="&lt; inf" name="CoffeeJunkie" nameOffsetX="0" nameOffsetY="0" positionX="120" positionY="450"/>
+    <place displayName="true" id="CoffeeMachine" initialMarking="0" invariant="&lt; inf" name="CoffeeMachine" nameOffsetX="104" nameOffsetY="14" positionX="435" positionY="450"/>
+    <place displayName="true" id="UnpatientObserver" initialMarking="1" invariant="&lt; inf" name="UnpatientObserver" nameOffsetX="0" nameOffsetY="0" positionX="120" positionY="750"/>
+    <place displayName="true" id="BrewedCoffee" initialMarking="1" invariant="&lt; inf" name="BrewedCoffee" nameOffsetX="126" nameOffsetY="21" positionX="345" positionY="645"/>
+    <transition angle="0" displayName="true" id="Insert" infiniteServer="false" name="Insert" nameOffsetX="0" nameOffsetY="0" player="0" positionX="270" positionY="390" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="Brewing" infiniteServer="false" name="Brewing" nameOffsetX="37" nameOffsetY="-11" player="0" positionX="315" positionY="540" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="Complaining" infiniteServer="false" name="Complaining" nameOffsetX="0" nameOffsetY="-1" player="0" positionX="270" positionY="750" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="TakeCoffee" infiniteServer="false" name="TakeCoffee" nameOffsetX="0" nameOffsetY="0" player="0" positionX="210" positionY="540" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="TimeOut" infiniteServer="false" name="TimeOut" nameOffsetX="0" nameOffsetY="0" player="0" positionX="225" positionY="675" priority="0" urgent="false"/>
+    <arc id="A4" inscription="[8,inf)" nameOffsetX="0" nameOffsetY="0" source="UnpatientObserver" target="Complaining" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="150" yCoord="765"/>
+      <arcpath arcPointType="false" id="1" xCoord="279" yCoord="765"/>
+    </arc>
+    <arc id="A7" inscription="[ActionTime,ActionTime]" nameOffsetX="0" nameOffsetY="0" source="CoffeeJunkie" target="Insert" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="148" yCoord="459"/>
+      <arcpath arcPointType="false" id="1" xCoord="279" yCoord="408"/>
+    </arc>
+    <arc id="A9" inscription="1" nameOffsetX="0" nameOffsetY="0" source="Insert" target="CoffeeMachine" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="289" yCoord="405"/>
+      <arcpath arcPointType="false" id="1" xCoord="435" yCoord="459"/>
+    </arc>
+    <arc id="A10" inscription="[ActionTime,ActionTime]" nameOffsetX="116" nameOffsetY="19" source="CoffeeMachine" target="Brewing" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="438" yCoord="474"/>
+      <arcpath arcPointType="false" id="1" xCoord="335" yCoord="554"/>
+    </arc>
+    <arc id="A16" inscription="1" nameOffsetX="0" nameOffsetY="0" source="Brewing" target="BrewedCoffee" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="330" yCoord="570"/>
+      <arcpath arcPointType="false" id="1" xCoord="355" yCoord="645"/>
+    </arc>
+    <arc id="A17" inscription="[ActionTime,ActionTime]" nameOffsetX="0" nameOffsetY="0" source="BrewedCoffee" target="TakeCoffee" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="347" yCoord="651"/>
+      <arcpath arcPointType="false" id="1" xCoord="229" yCoord="564"/>
+    </arc>
+    <arc id="A18" inscription="1" nameOffsetX="0" nameOffsetY="0" source="TakeCoffee" target="CoffeeJunkie" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="219" yCoord="555"/>
+      <arcpath arcPointType="false" id="1" xCoord="145" yCoord="475"/>
+    </arc>
+    <arc id="A11" inscription="[4,inf)" nameOffsetX="0" nameOffsetY="0" source="BrewedCoffee" target="TimeOut" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="345" yCoord="663"/>
+      <arcpath arcPointType="false" id="1" xCoord="245" yCoord="687"/>
+    </arc>
+    <arc id="A8" inscription="1" nameOffsetX="0" nameOffsetY="0" source="TimeOut" target="UnpatientObserver" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="234" yCoord="690"/>
+      <arcpath arcPointType="false" id="1" xCoord="146" yCoord="755"/>
+    </arc>
+  </net>
+  <k-bound bound="3"/>
+  <feature isGame="true" isTimed="true"/>
+</pnml>
