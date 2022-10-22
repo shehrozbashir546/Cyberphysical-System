@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <net active="true" id="TAPN1" type="P/T net">
+    <place displayName="true" id="Charging" initialMarking="2" invariant="&lt; inf" name="Charging" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="225.0" positionY="465.0"/>
+    <place displayName="true" id="Flying" initialMarking="0" invariant="&lt; inf" name="Flying" nameOffsetX="18.0" nameOffsetY="46.0" positionX="405.0" positionY="465.0"/>
+    <place displayName="true" id="Scan_Field" initialMarking="0" invariant="&lt; inf" name="Scan_Field" nameOffsetX="20.0" nameOffsetY="44.0" positionX="675.0" positionY="255.0"/>
+    <place displayName="true" id="Taking_Probes" initialMarking="0" invariant="&lt; inf" name="Taking_Probes" nameOffsetX="25.0" nameOffsetY="43.0" positionX="675.0" positionY="390.0"/>
+    <place displayName="true" id="Spray_Plants" initialMarking="0" invariant="&lt; inf" name="Spray_Plants" nameOffsetX="26.0" nameOffsetY="45.0" positionX="675.0" positionY="525.0"/>
+    <place displayName="true" id="Check_Moisture" initialMarking="0" invariant="&lt; inf" name="Check_Moisture" nameOffsetX="42.0" nameOffsetY="47.0" positionX="675.0" positionY="675.0"/>
+    <transition angle="0" displayName="true" id="T0" infiniteServer="false" name="T0" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="315.0" positionY="390.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T1" infiniteServer="false" name="T1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="615.0" positionY="255.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T2" infiniteServer="false" name="T2" nameOffsetX="0.0" nameOffsetY="49.0" positionX="615.0" positionY="390.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T3" infiniteServer="false" name="T3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="615.0" positionY="525.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T4" infiniteServer="false" name="T4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="615.0" positionY="675.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T5" infiniteServer="false" name="T5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="315.0" positionY="510.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T8" infiniteServer="false" name="T8" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="810.0" positionY="255.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T9" infiniteServer="false" name="T9" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="810.0" positionY="390.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T10" infiniteServer="false" name="T10" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="810.0" positionY="525.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T11" infiniteServer="false" name="T11" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="810.0" positionY="675.0" priority="0" urgent="false"/>
+    <arc id="T5 to Charging" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="T5" target="Charging" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="321" yCoord="522"/>
+      <arcpath arcPointType="false" id="1" xCoord="250" yCoord="484"/>
+    </arc>
+    <arc id="Charging to T0" inscription="[30,inf)" nameOffsetX="0.0" nameOffsetY="0.0" source="Charging" target="T0" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="248" yCoord="467"/>
+      <arcpath arcPointType="false" id="1" xCoord="321" yCoord="402"/>
+    </arc>
+    <arc id="T0 to Flying" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="T0" target="Flying" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="331" yCoord="402"/>
+      <arcpath arcPointType="false" id="1" xCoord="405" yCoord="467"/>
+    </arc>
+    <arc id="Flying to T5" inscription="[0,15]" nameOffsetX="0.0" nameOffsetY="0.0" source="Flying" target="T5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="403" yCoord="484"/>
+      <arcpath arcPointType="false" id="1" xCoord="331" yCoord="522"/>
+    </arc>
+    <arc id="Flying to T1" inscription="[0,12]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="Flying" target="T1" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="427" yCoord="466"/>
+      <arcpath arcPointType="false" id="1" xCoord="621" yCoord="272"/>
+    </arc>
+    <arc id="T1 to Scan_Field" inscription="[0,12]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="T1" target="Scan_Field" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="631" yCoord="267"/>
+      <arcpath arcPointType="false" id="1" xCoord="672" yCoord="267"/>
+    </arc>
+    <arc id="Flying to T2" inscription="[0,12]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="Flying" target="T2" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="431" yCoord="472"/>
+      <arcpath arcPointType="false" id="1" xCoord="621" yCoord="407"/>
+    </arc>
+    <arc id="T2 to Taking_Probes" inscription="[0,12]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="T2" target="Taking_Probes" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="631" yCoord="402"/>
+      <arcpath arcPointType="false" id="1" xCoord="672" yCoord="402"/>
+    </arc>
+    <arc id="Flying to T3" inscription="[0,12]:1" nameOffsetX="5.0" nameOffsetY="4.0" source="Flying" target="T3" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="431" yCoord="481"/>
+      <arcpath arcPointType="false" id="1" xCoord="621" yCoord="542"/>
+    </arc>
+    <arc id="T3 to Spray_Plants" inscription="[0,12]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="T3" target="Spray_Plants" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="631" yCoord="537"/>
+      <arcpath arcPointType="false" id="1" xCoord="672" yCoord="537"/>
+    </arc>
+    <arc id="Flying to T4" inscription="[0,12]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="Flying" target="T4" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="427" yCoord="487"/>
+      <arcpath arcPointType="false" id="1" xCoord="621" yCoord="692"/>
+    </arc>
+    <arc id="T4 to Check_Moisture" inscription="[0,12]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="T4" target="Check_Moisture" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="631" yCoord="687"/>
+      <arcpath arcPointType="false" id="1" xCoord="672" yCoord="687"/>
+    </arc>
+    <arc id="Scan_Field to T1" inscription="[0,inf)" nameOffsetX="0.0" nameOffsetY="0.0" source="Scan_Field" target="T1" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="676" yCoord="256"/>
+      <arcpath arcPointType="false" id="1" xCoord="627" yCoord="207"/>
+      <arcpath arcPointType="false" id="2" xCoord="582" yCoord="267"/>
+      <arcpath arcPointType="false" id="3" xCoord="622" yCoord="262"/>
+    </arc>
+    <arc id="Taking_Probes to T2" inscription="[0,inf)" nameOffsetX="0.0" nameOffsetY="0.0" source="Taking_Probes" target="T2" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="675" yCoord="393"/>
+      <arcpath arcPointType="false" id="1" xCoord="627" yCoord="357"/>
+      <arcpath arcPointType="false" id="2" xCoord="597" yCoord="402"/>
+      <arcpath arcPointType="false" id="3" xCoord="622" yCoord="397"/>
+    </arc>
+    <arc id="Spray_Plants to T3" inscription="[0,inf)" nameOffsetX="0.0" nameOffsetY="0.0" source="Spray_Plants" target="T3" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="675" yCoord="528"/>
+      <arcpath arcPointType="false" id="1" xCoord="627" yCoord="492"/>
+      <arcpath arcPointType="false" id="2" xCoord="597" yCoord="522"/>
+      <arcpath arcPointType="false" id="3" xCoord="622" yCoord="532"/>
+    </arc>
+    <arc id="Check_Moisture to T4" inscription="[0,inf)" nameOffsetX="0.0" nameOffsetY="0.0" source="Check_Moisture" target="T4" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="675" yCoord="678"/>
+      <arcpath arcPointType="false" id="1" xCoord="627" yCoord="642"/>
+      <arcpath arcPointType="false" id="2" xCoord="612" yCoord="672"/>
+      <arcpath arcPointType="false" id="3" xCoord="622" yCoord="682"/>
+    </arc>
+    <arc id="Scan_Field to T8" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="Scan_Field" target="T8" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="701" yCoord="267"/>
+      <arcpath arcPointType="false" id="1" xCoord="816" yCoord="267"/>
+    </arc>
+    <arc id="T8 to Flying" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="T8" target="Flying" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="267"/>
+      <arcpath arcPointType="false" id="1" xCoord="882" yCoord="267"/>
+      <arcpath arcPointType="false" id="2" xCoord="882" yCoord="177"/>
+      <arcpath arcPointType="false" id="3" xCoord="447" yCoord="177"/>
+      <arcpath arcPointType="false" id="4" xCoord="417" yCoord="177"/>
+      <arcpath arcPointType="false" id="5" xCoord="417" yCoord="462"/>
+    </arc>
+    <arc id="Taking_Probes to T9" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="Taking_Probes" target="T9" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="701" yCoord="402"/>
+      <arcpath arcPointType="false" id="1" xCoord="816" yCoord="402"/>
+    </arc>
+    <arc id="T9 to Flying" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="T9" target="Flying" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="402"/>
+      <arcpath arcPointType="false" id="1" xCoord="882" yCoord="402"/>
+      <arcpath arcPointType="false" id="2" xCoord="882" yCoord="177"/>
+      <arcpath arcPointType="false" id="3" xCoord="417" yCoord="177"/>
+      <arcpath arcPointType="false" id="4" xCoord="417" yCoord="462"/>
+    </arc>
+    <arc id="Spray_Plants to T10" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="Spray_Plants" target="T10" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="701" yCoord="537"/>
+      <arcpath arcPointType="false" id="1" xCoord="816" yCoord="537"/>
+    </arc>
+    <arc id="T10 to Flying" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="T10" target="Flying" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="537"/>
+      <arcpath arcPointType="false" id="1" xCoord="882" yCoord="537"/>
+      <arcpath arcPointType="false" id="2" xCoord="882" yCoord="777"/>
+      <arcpath arcPointType="false" id="3" xCoord="417" yCoord="777"/>
+      <arcpath arcPointType="false" id="4" xCoord="417" yCoord="492"/>
+    </arc>
+    <arc id="Check_Moisture to T11" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="Check_Moisture" target="T11" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="701" yCoord="687"/>
+      <arcpath arcPointType="false" id="1" xCoord="816" yCoord="687"/>
+    </arc>
+    <arc id="T11 to Flying" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="T11" target="Flying" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="687"/>
+      <arcpath arcPointType="false" id="1" xCoord="882" yCoord="687"/>
+      <arcpath arcPointType="false" id="2" xCoord="882" yCoord="777"/>
+      <arcpath arcPointType="false" id="3" xCoord="417" yCoord="777"/>
+      <arcpath arcPointType="false" id="4" xCoord="417" yCoord="492"/>
+    </arc>
+  </net>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Query Comment/Name Here" overApproximation="false" pTrie="true" query="AG !(deadlock)" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true"/>
+  <k-bound bound="3"/>
+</pnml>
