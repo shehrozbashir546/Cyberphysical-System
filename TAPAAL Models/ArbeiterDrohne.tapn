@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <net active="true" id="TAPN1" type="P/T net">
+    <labels border="true" height="228" positionX="581" positionY="255" width="193">The drone is able to work for 15 minutes.
+It may return to the charging station after 12 minutes, if work is done and it doesn't make sense to start a new job.
+
+If an emergency happens, the drone decides wether to return to the charging station (if its battery capacity allows it),
+or to perfom an emergency landing on the spot.
+A manual pick up is then required.</labels>
+    <place displayName="true" id="Charging_Area" initialMarking="1" invariant="&lt; inf" name="Charging_Area" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="312.7272727272727" positionY="631.3636363636361"/>
+    <place displayName="true" id="Working" initialMarking="0" invariant="&lt; inf" name="Working" nameOffsetX="74.99999999999991" nameOffsetY="15.0" positionX="619.0909090909088" positionY="631.8181818181812"/>
+    <place displayName="true" id="Emergency_Handling" initialMarking="0" invariant="&lt; inf" name="Emergency_Handling" nameOffsetX="60.45454545454541" nameOffsetY="-4.090909090909091" positionX="451.8181818181818" positionY="466.36363636363615"/>
+    <place displayName="true" id="Emergency_Landing" initialMarking="0" invariant="&lt; inf" name="Emergency_Landing" nameOffsetX="46.818181818181785" nameOffsetY="-5.909090909090909" positionX="447.72727272727275" positionY="286.3636363636363"/>
+    <transition angle="0" displayName="true" id="go_working" infiniteServer="false" name="go_working" nameOffsetX="49.54545454545451" nameOffsetY="-7.7272727272727115" positionX="465.0" positionY="630.6363636363636" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="emergency" infiniteServer="false" name="emergency" nameOffsetX="70.45454545454537" nameOffsetY="-4.999999999999995" positionX="540.0" positionY="532.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="return" infiniteServer="false" name="return" nameOffsetX="8.636363636363635" nameOffsetY="15.909090909090919" positionX="367.0" positionY="532.0" priority="0" urgent="false"/>
+    <transition angle="90" displayName="true" id="land_immediately" infiniteServer="false" name="land_immediately" nameOffsetX="129.54545454545462" nameOffsetY="16.818181818181813" positionX="450.0" positionY="367.0" priority="0" urgent="false"/>
+    <transition angle="90" displayName="true" id="problem_solved" infiniteServer="false" name="problem_solved" nameOffsetX="-5.0" nameOffsetY="17.727272727272727" positionX="310.45454545454544" positionY="367.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="battery_empty" infiniteServer="false" name="battery_empty" nameOffsetX="48.63636363636361" nameOffsetY="42.27272727272726" positionX="467.0" positionY="691.0" priority="0" urgent="false"/>
+    <arc id="Charging_Area to go_working" inscription="[60,inf)" nameOffsetX="9.999999999999998" nameOffsetY="-3.636363636363636" source="Charging_Area" target="go_working" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="339" yCoord="642"/>
+      <arcpath arcPointType="false" id="1" xCoord="470" yCoord="642"/>
+    </arc>
+    <arc id="go_working to Working" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="go_working" target="Working" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="480" yCoord="642"/>
+      <arcpath arcPointType="false" id="1" xCoord="615" yCoord="642"/>
+    </arc>
+    <arc id="Working to emergency" inscription="[0,inf):1" nameOffsetX="0.0" nameOffsetY="0.0" source="Working" target="emergency" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="621" yCoord="630"/>
+      <arcpath arcPointType="false" id="1" xCoord="556" yCoord="543"/>
+    </arc>
+    <arc id="emergency to Emergency_Handling" inscription="[0,inf):1" nameOffsetX="12.727272727272725" nameOffsetY="0.9090909090909086" source="emergency" target="Emergency_Handling" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="546" yCoord="543"/>
+      <arcpath arcPointType="false" id="1" xCoord="474" yCoord="487"/>
+    </arc>
+    <arc id="Emergency_Handling to return" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="Emergency_Handling" target="return" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="451" yCoord="487"/>
+      <arcpath arcPointType="false" id="1" xCoord="383" yCoord="543"/>
+    </arc>
+    <arc id="return to Charging_Area" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="return" target="Charging_Area" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="378" yCoord="558"/>
+      <arcpath arcPointType="false" id="1" xCoord="331" yCoord="630"/>
+    </arc>
+    <arc id="Emergency_Handling to land_immediately" inscription="[0,inf):1" nameOffsetX="0.0" nameOffsetY="0.0" source="Emergency_Handling" target="land_immediately" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="462" yCoord="462"/>
+      <arcpath arcPointType="false" id="1" xCoord="460" yCoord="383"/>
+    </arc>
+    <arc id="land_immediately to Emergency_Landing" inscription="[0,inf):1" nameOffsetX="0.0" nameOffsetY="0.0" source="land_immediately" target="Emergency_Landing" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="460" yCoord="373"/>
+      <arcpath arcPointType="false" id="1" xCoord="459" yCoord="312"/>
+    </arc>
+    <arc id="Working to battery_empty" inscription="[12,15]" nameOffsetX="0.0" nameOffsetY="0.0" source="Working" target="battery_empty" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="616" yCoord="649"/>
+      <arcpath arcPointType="false" id="1" xCoord="483" yCoord="702"/>
+    </arc>
+    <arc id="battery_empty to Charging_Area" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="battery_empty" target="Charging_Area" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="473" yCoord="702"/>
+      <arcpath arcPointType="false" id="1" xCoord="338" yCoord="648"/>
+    </arc>
+    <arc id="Emergency_Landing to problem_solved" inscription="[0,inf)" nameOffsetX="0.0" nameOffsetY="0.0" source="Emergency_Landing" target="problem_solved" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="445" yCoord="304"/>
+      <arcpath arcPointType="false" id="1" xCoord="320" yCoord="373"/>
+    </arc>
+    <arc id="problem_solved to Charging_Area" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="problem_solved" target="Charging_Area" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="321" yCoord="383"/>
+      <arcpath arcPointType="false" id="1" xCoord="323" yCoord="628"/>
+    </arc>
+  </net>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Query Comment/Deadlock" overApproximation="false" pTrie="true" query="AG !(deadlock)" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true"/>
+  <k-bound bound="3"/>
+</pnml>
