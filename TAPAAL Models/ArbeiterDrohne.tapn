@@ -33,14 +33,6 @@ A manual pick up is then required.</labels>
       <arcpath arcPointType="false" id="0" xCoord="546" yCoord="543"/>
       <arcpath arcPointType="false" id="1" xCoord="474" yCoord="487"/>
     </arc>
-    <arc id="Emergency_Handling to return" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="Emergency_Handling" target="return" type="transport" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="451" yCoord="487"/>
-      <arcpath arcPointType="false" id="1" xCoord="383" yCoord="543"/>
-    </arc>
-    <arc id="return to Charging_Area" inscription="[0,15]:1" nameOffsetX="0.0" nameOffsetY="0.0" source="return" target="Charging_Area" type="transport" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="378" yCoord="558"/>
-      <arcpath arcPointType="false" id="1" xCoord="331" yCoord="630"/>
-    </arc>
     <arc id="Emergency_Handling to land_immediately" inscription="[0,inf):1" nameOffsetX="0.0" nameOffsetY="0.0" source="Emergency_Handling" target="land_immediately" type="transport" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="462" yCoord="462"/>
       <arcpath arcPointType="false" id="1" xCoord="460" yCoord="383"/>
@@ -64,6 +56,14 @@ A manual pick up is then required.</labels>
     <arc id="problem_solved to Charging_Area" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="problem_solved" target="Charging_Area" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="321" yCoord="383"/>
       <arcpath arcPointType="false" id="1" xCoord="323" yCoord="628"/>
+    </arc>
+    <arc id="Emergency_Handling to return" inscription="[0,15]" nameOffsetX="0.0" nameOffsetY="0.0" source="Emergency_Handling" target="return" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="451" yCoord="487"/>
+      <arcpath arcPointType="false" id="1" xCoord="383" yCoord="543"/>
+    </arc>
+    <arc id="return to Charging_Area" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="return" target="Charging_Area" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="378" yCoord="558"/>
+      <arcpath arcPointType="false" id="1" xCoord="331" yCoord="630"/>
     </arc>
   </net>
   <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="Query Comment/Deadlock" overApproximation="false" pTrie="true" query="AG !(deadlock)" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true"/>
