@@ -8,7 +8,7 @@
     <place displayName="true" id="transmit_data" initialMarking="0" invariant="&lt;= 3" name="transmit_data" nameOffsetX="56" nameOffsetY="47" positionX="675" positionY="450"/>
     <place displayName="true" id="receive_command" initialMarking="0" invariant="&lt;= 7" name="receive_command" nameOffsetX="156" nameOffsetY="-5" positionX="840" positionY="450"/>
     <place displayName="true" id="Navigate" initialMarking="0" invariant="&lt; inf" name="Navigate" nameOffsetX="47" nameOffsetY="47" positionX="840" positionY="555"/>
-    <place displayName="true" id="time_out" initialMarking="0" invariant="&lt;= 7" name="time_out" nameOffsetX="44" nameOffsetY="45" positionX="1020" positionY="375"/>
+    <place displayName="true" id="time_out" initialMarking="0" invariant="&lt;= 7" name="time_out" nameOffsetX="44" nameOffsetY="45" positionX="832" positionY="323"/>
     <place displayName="true" id="execution" initialMarking="0" invariant="&lt;= 3" name="execution" nameOffsetX="38" nameOffsetY="44" positionX="576" positionY="559"/>
     <transition angle="0" displayName="true" id="T0" infiniteServer="false" name="T0" nameOffsetX="0" nameOffsetY="0" player="0" positionX="210" positionY="360" priority="0" urgent="false"/>
     <transition angle="0" displayName="true" id="T3" infiniteServer="false" name="T3" nameOffsetX="0" nameOffsetY="0" player="0" positionX="390" positionY="300" priority="0" urgent="false"/>
@@ -80,11 +80,11 @@
     </arc>
     <arc id="A18" inscription="[7,inf):1" nameOffsetX="0" nameOffsetY="0" source="receive_command" target="T11" type="transport" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="867" yCoord="456"/>
-      <arcpath arcPointType="false" id="1" xCoord="955" yCoord="391"/>
+      <arcpath arcPointType="false" id="1" xCoord="955" yCoord="396"/>
     </arc>
     <arc id="A17" inscription="[7,inf):1" nameOffsetX="0" nameOffsetY="0" source="T11" target="time_out" type="transport" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="965" yCoord="391"/>
-      <arcpath arcPointType="false" id="1" xCoord="1020" yCoord="391"/>
+      <arcpath arcPointType="false" id="0" xCoord="955" yCoord="386"/>
+      <arcpath arcPointType="false" id="1" xCoord="861" yCoord="344"/>
     </arc>
     <arc id="A19" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="receive_command" target="T9" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="869" yCoord="471"/>
@@ -95,9 +95,8 @@
       <arcpath arcPointType="false" id="1" xCoord="868" yCoord="564"/>
     </arc>
     <arc id="A21" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="time_out" target="T12" type="timed" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="1035" yCoord="375"/>
-      <arcpath arcPointType="false" id="1" xCoord="1037" yCoord="149"/>
-      <arcpath arcPointType="false" id="2" xCoord="410" yCoord="135"/>
+      <arcpath arcPointType="false" id="0" xCoord="834" yCoord="332"/>
+      <arcpath arcPointType="false" id="1" xCoord="410" yCoord="135"/>
     </arc>
     <arc id="A22" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T12" target="Idle" type="normal" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="400" yCoord="135"/>
