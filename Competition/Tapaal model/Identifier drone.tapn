@@ -2,10 +2,10 @@
 <pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
   <shared-place initialMarking="0" invariant="&lt;= 5" name="update_database"/>
   <net active="true" id="Identifier_drone" type="P/T net">
-    <place displayName="true" id="Idle" initialMarking="1" invariant="&lt; inf" name="Idle" nameOffsetX="22" nameOffsetY="2" positionX="285" positionY="120"/>
+    <place displayName="true" id="Idle" initialMarking="1" invariant="&lt; inf" name="Idle" nameOffsetX="22" nameOffsetY="-5" positionX="285" positionY="120"/>
     <place displayName="true" id="move" initialMarking="0" invariant="&lt;= 2" name="move" nameOffsetX="-10" nameOffsetY="-3" positionX="285" positionY="270"/>
     <place displayName="true" id="Identifying" initialMarking="0" invariant="&lt;= 4" name="Identifying" nameOffsetX="93" nameOffsetY="9" positionX="480" positionY="270"/>
-    <place displayName="true" id="update_database" initialMarking="0" invariant="&lt;= 5" name="update_database" nameOffsetX="131" nameOffsetY="17" positionX="375" positionY="435"/>
+    <place displayName="true" id="update_database" initialMarking="0" invariant="&lt;= 5" name="update_database" nameOffsetX="70" nameOffsetY="47" positionX="375" positionY="435"/>
     <transition angle="90" displayName="true" id="T0" infiniteServer="false" name="T0" nameOffsetX="58" nameOffsetY="11" player="0" positionX="285" positionY="195" priority="0" urgent="false"/>
     <transition angle="0" displayName="true" id="T1" infiniteServer="false" name="T1" nameOffsetX="0" nameOffsetY="0" player="0" positionX="375" positionY="270" priority="0" urgent="false"/>
     <transition angle="90" displayName="true" id="T2" infiniteServer="false" name="T2" nameOffsetX="56" nameOffsetY="19" player="0" positionX="375" positionY="360" priority="0" urgent="false"/>
@@ -49,36 +49,36 @@
     <transition angle="0" displayName="true" id="T10" infiniteServer="false" name="T10" nameOffsetX="0" nameOffsetY="0" player="0" positionX="540" positionY="240" priority="0" urgent="false"/>
     <transition angle="0" displayName="true" id="T11" infiniteServer="false" name="T11" nameOffsetX="0" nameOffsetY="0" player="0" positionX="720" positionY="360" priority="0" urgent="false"/>
     <arc id="A5" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T6" target="remove" type="normal" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="559" yCoord="375"/>
+      <arcpath arcPointType="false" id="0" xCoord="560" yCoord="375"/>
       <arcpath arcPointType="false" id="1" xCoord="630" yCoord="375"/>
     </arc>
     <arc id="A10" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="remove" target="T11" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="660" yCoord="375"/>
-      <arcpath arcPointType="false" id="1" xCoord="729" yCoord="375"/>
+      <arcpath arcPointType="false" id="1" xCoord="730" yCoord="375"/>
     </arc>
     <arc id="A7" inscription="[0,inf):1" nameOffsetX="0" nameOffsetY="0" source="update_database" target="identified_healthy" type="transport" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="297" yCoord="306"/>
-      <arcpath arcPointType="false" id="1" xCoord="369" yCoord="255"/>
+      <arcpath arcPointType="false" id="1" xCoord="370" yCoord="255"/>
     </arc>
     <arc id="A6" inscription="[0,inf):1" nameOffsetX="0" nameOffsetY="0" source="identified_healthy" target="hover" type="transport" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="379" yCoord="255"/>
+      <arcpath arcPointType="false" id="0" xCoord="380" yCoord="255"/>
       <arcpath arcPointType="false" id="1" xCoord="450" yCoord="255"/>
     </arc>
     <arc id="A8" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="hover" target="T10" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="480" yCoord="255"/>
-      <arcpath arcPointType="false" id="1" xCoord="549" yCoord="255"/>
+      <arcpath arcPointType="false" id="1" xCoord="550" yCoord="255"/>
     </arc>
     <arc id="A11" inscription="[0,inf):1" nameOffsetX="26" nameOffsetY="-16" source="update_database" target="to_be_removed" type="transport" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="297" yCoord="323"/>
-      <arcpath arcPointType="false" id="1" xCoord="369" yCoord="375"/>
+      <arcpath arcPointType="false" id="0" xCoord="297" yCoord="324"/>
+      <arcpath arcPointType="false" id="1" xCoord="370" yCoord="375"/>
     </arc>
     <arc id="A9" inscription="[0,inf):1" nameOffsetX="0" nameOffsetY="0" source="to_be_removed" target="move_to_target" type="transport" weight="1">
-      <arcpath arcPointType="false" id="0" xCoord="379" yCoord="375"/>
+      <arcpath arcPointType="false" id="0" xCoord="380" yCoord="375"/>
       <arcpath arcPointType="false" id="1" xCoord="450" yCoord="375"/>
     </arc>
     <arc id="A10" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="move_to_target" target="T6" type="timed" weight="1">
       <arcpath arcPointType="false" id="0" xCoord="480" yCoord="375"/>
-      <arcpath arcPointType="false" id="1" xCoord="549" yCoord="375"/>
+      <arcpath arcPointType="false" id="1" xCoord="550" yCoord="375"/>
     </arc>
   </net>
   <k-bound bound="3"/>
